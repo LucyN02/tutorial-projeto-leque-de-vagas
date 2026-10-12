@@ -4,6 +4,54 @@ API RESTful desenvolvida com Spring Boot, aplicando arquitetura em camadas e rep
 
 ---
 
+## 🔀 Roteiro Git para a Equipe (Início Imediato)
+
+> **Atenção:** As branches de cada frente **já foram criadas no repositório remoto**. Ninguém deve criar branches novas nem commitar diretamente na branch `main`.
+
+Cada pessoa da equipe deve clonar o projeto, sincronizar as branches remotas e mudar imediatamente para a branch designada para a sua frente de desenvolvimento:
+
+### 1. Clonar o projeto e sincronizar
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd <NOME_DA_PASTA_DO_PROJETO>
+git fetch --all
+```
+
+### 2. Acessar a sua branch designada
+* **Pessoa 1 (Frente 1 - Vagas):**
+  ```bash
+  git checkout feature/frente-1-vaga
+  git pull origin feature/frente-1-vaga
+  ```
+* **Pessoa 2 (Frente 2 - Empresas):**
+  ```bash
+  git checkout feature/frente-2-empresa
+  git pull origin feature/frente-2-empresa
+  ```
+* **Pessoa 3 (Frente 3 - Candidaturas):**
+  ```bash
+  git checkout feature/frente-3-candidatura
+  git pull origin feature/frente-3-candidatura
+  ```
+* **Pessoa 4 (Frente 4 - Busca & Estatísticas):**
+  ```bash
+  git checkout feature/frente-4-busca-metricas
+  git pull origin feature/frente-4-busca-metricas
+  ```
+
+### 3. Fluxo de trabalho diário
+1. Certifique-se de estar na sua branch: `git branch`
+2. Escreva o código respectivo da sua frente.
+3. Adicione e envie suas alterações:
+   ```bash
+   git add .
+   git commit -m "feat: implementacao da frente X"
+   git push origin <SUA_BRANCH>
+   ```
+4. Ao concluir, abra um **Pull Request (PR)** da sua branch apontando para a branch `main`.
+
+---
+
 ## 📌 Sumário
 - [Arquitetura e Conceitos](#-arquitetura-e-conceitos)
 - [Estrutura de Pastas do Projeto](#-estrutura-de-pastas-do-projeto)
@@ -13,7 +61,6 @@ API RESTful desenvolvida com Spring Boot, aplicando arquitetura em camadas e rep
 - [Frente 2: Empresas](#-frente-2-empresas)
 - [Frente 3: Candidaturas](#-frente-3-candidaturas)
 - [Frente 4: Busca & Estatísticas](#-frente-4-busca--estatísticas)
-- [Roteiro Git para a Equipe](#-roteiro-git-para-a-equipe)
 
 ---
 
@@ -46,10 +93,10 @@ src/
     │           │   │   └── EstatisticasRespostaDTO.java
     │           │   ├── candidatura/
     │           │   │   ├── CandidaturaRequisicaoDTO.java
-    │           │   |   └── CandidaturaRespostaDTO.java
+    │           │   │   └── CandidaturaRespostaDTO.java
     │           │   ├── empresa/
     │           │   │   ├── EmpresaRequisicaoDTO.java
-    │           │   |   └── EmpresaRespostaDTO.java
+    │           │   │   └── EmpresaRespostaDTO.java
     │           │   └── vaga/
     │           │       ├── VagaRequisicaoDTO.java
     │           │       └── VagaRespostaDTO.java
@@ -78,12 +125,12 @@ src/
 
 ## 👥 Divisão das Frentes de Trabalho
 
-| Frente | Responsável | Módulo | Endpoints |
-| :--- | :--- | :--- | :--- |
-| **Frente 1** | Pessoa 1 | Gestão de Vagas | `GET /vagas`, `GET /vagas/{id}`, `POST /vagas`, `PUT /vagas/{id}`, `DELETE /vagas/{id}` |
-| **Frente 2** | Pessoa 2 | Empresas Parceiras | `GET /empresas`, `GET /empresas/{id}`, `POST /empresas` |
-| **Frente 3** | Pessoa 3 | Candidaturas | `POST /pessoas`, `GET /candidaturas`, `POST /candidaturas` |
-| **Frente 4** | Pessoa 4 | Busca & Estatísticas | `GET /estatisticas`, `GET /vagas/busca` |
+| Frente | Responsável | Módulo | Branch Existente | Endpoints |
+| :--- | :--- | :--- | :--- | :--- |
+| **Frente 1** | Pessoa 1 | Gestão de Vagas | `feature/frente-1-vaga` | `GET /vagas`, `GET /vagas/{id}`, `POST /vagas`, `PUT /vagas/{id}`, `DELETE /vagas/{id}` |
+| **Frente 2** | Pessoa 2 | Empresas Parceiras | `feature/frente-2-empresa` | `GET /empresas`, `GET /empresas/{id}`, `POST /empresas` |
+| **Frente 3** | Pessoa 3 | Candidaturas | `feature/frente-3-candidatura` | `POST /pessoas`, `GET /candidaturas`, `POST /candidaturas` |
+| **Frente 4** | Pessoa 4 | Busca & Estatísticas | `feature/frente-4-busca-metricas` | `GET /estatisticas`, `GET /vagas/busca` |
 
 ---
 
@@ -936,16 +983,3 @@ public class BuscaEstatisticasController {
     }
 }
 ```
-
----
-
-## 🔀 Roteiro Git para a Equipe
-
-1. **Repositório Central:** Criar o projeto no GitHub (Java 21, Spring Boot, Maven, Spring Web, Validation) gerado com o base package `lequedevagas.demo`.
-2. **Setup Base:** Fazer merge para a branch `main` da estrutura inicial de exceções (`exception/`), `GlobalExceptionHandler` e `ErroRespostaDTO`.
-3. **Criação das Branches de Trabalho:**
-   - Pessoa 1: `git checkout -b feature/frente-1-vaga`
-   - Pessoa 2: `git checkout -b feature/frente-2-empresa`
-   - Pessoa 3: `git checkout -b feature/frente-3-candidatura`
-   - Pessoa 4: `git checkout -b feature/frente-4-busca-metricas`
-4. **Pull Requests:** Submeter PR com evidência de testes manuais em clientes HTTP antes do merge final na `main`.
